@@ -1,0 +1,4 @@
+{
+  "directory": "src/components",
+  "shorthand_resolver": "git://example.com/{{{ organization }}}/{{{ package }}}.git"
+}

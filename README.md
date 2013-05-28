@@ -1,6 +1,8 @@
 # [Reveal.js](http://lab.hakim.se/reveal-js/) skeleton for [DocPad](https://github.com/bevry/docpad)
 Create reveal.js presentations using DocPad.
 
+Based on [this](https://github.com/DjebbZ/revealjs-docpad), but I wasn't able to get it running. My fork fixes the issue I was having with the slide collection. I also updated to the most recent version of Reveal.js, switched from Markdown to Jade on the slide pages, and am using Stylus for my own theme.
+
 ## Description
 
 Gives you everything to directly start writing your reveal.js slides, with an optional menu to navigate between them.
@@ -12,7 +14,7 @@ Gives you everything to directly start writing your reveal.js slides, with an op
 1. Clone the project and run the server
 
 	``` bash
-	git clone git://github.com/DjebbZ/revealjs-docpad.git
+	git clone git@github.com:kylamedina/revealjs-docpad.git
 	cd revealjs.docpad
 	npm install
 	docpad run

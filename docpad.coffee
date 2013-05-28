@@ -2,8 +2,8 @@
 # It is simply a CoffeeScript Object which is parsed by CSON
 docpadConfig = {
 
-	# =================================
 	# Template Data
+	# =============
 	# These are variables that will be accessible via our templates
 	# To access one of these within our templates, refer to the FAQ: https://github.com/bevry/docpad/wiki/FAQ
 
@@ -11,6 +11,15 @@ docpadConfig = {
 
 		# Specify some site properties
 		site:
+			# The production url of our website
+			url: "http://website.com"
+
+			# Here are some old site urls that you would like to redirect from
+			oldUrls: [
+				'www.website.com',
+				'website.herokuapp.com'
+			]
+
 			# The default title of our website
 			title: "Your Website"
 
@@ -24,12 +33,20 @@ docpadConfig = {
 				place, your, website, keywoards, here, keep, them, related, to, the, content, of, your, website
 				"""
 
+			# The website author's name
+			author: "Your Name"
 
+			# The website author's email
+			email: "your@email.com"
+
+			# Your company's name
+			copyright: "© Your Company 2012"
+			
 		# --------------------------------------
 		# Revealjs.docpad specific configuration
 
 		# Generate menu
-		generateSlidesMenu: true
+		generateSlidesMenu:false
 
 		# -----------------------------
 		# Helper Functions
@@ -55,7 +72,27 @@ docpadConfig = {
 			# Merge the document keywords with the site keywords
 			@site.keywords.concat(@document.keywords or []).join(', ')
 
+		getGruntedStyles: ->
+			_ = require 'underscore'
+			styles = []
+			gruntConfig = require('./grunt-config.json')
+			_.each gruntConfig, (value, key) ->
+				styles = styles.concat _.flatten _.pluck value, 'dest'
+			styles = _.filter styles, (value) ->
+				return value.indexOf('.min.css') > -1
+			_.map styles, (value) ->
+				return value.replace 'out', ''
 
+		getGruntedScripts: ->
+			_ = require 'underscore'
+			scripts = []
+			gruntConfig = require('./grunt-config.json')
+			_.each gruntConfig, (value, key) ->
+				scripts = scripts.concat _.flatten _.pluck value, 'dest'
+			scripts = _.filter scripts, (value) ->
+				return value.indexOf('.min.js') > -1
+			_.map scripts, (value) ->
+				return value.replace 'out', ''
 
 	# =================================
 	# Collections
@@ -64,8 +101,7 @@ docpadConfig = {
 	collections:
 	# Reveal.js slides
 		slides: (database) ->
-			database.findAllLive({tags: $has: 'slide', slideOrder: $exists: true},{slideOrder:1})
-
+			database.findAllLive({relativeOutDirPath:'slides'},{slideOrder: $exists: true},{slideOrder:1})
 }
 
 # Export our DocPad Configuration

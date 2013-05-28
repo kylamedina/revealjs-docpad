@@ -1,0 +1,27 @@
+// Forms ========================================
+
+code(invert=false)
+	if invert
+		background invert(primary)
+		color invert(text1)
+	else
+		background-color primary
+		color text2
+
+.reveal
+	code,
+	pre
+		//white-space: pre-wrap
+		//white-space: -moz-pre-wrap
+		text-align left
+		background offwhite
+		color invert(primary)
+		overflow x-scroll
+		font-weight normal
+		padding 0.5rem
+
+	code.inline
+		color primary
+		position relative
+		line-height 1
+		line 0

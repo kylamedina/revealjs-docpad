@@ -18,11 +18,11 @@ div class:'reveal', ->
 				text slide.contentRenderedWithoutLayouts if slide.contentRenderedWithoutLayouts
 
 	# The navigational controls UI
-	aside class:"controls", style:"display: block;", ->
-		a class:"left", href:"#", -> '◄'
-		a class:"right", href:"#", -> '►'
-		a class:"up", href:"#", -> '▲'
-		a class:"down", href:"#", '▼'
+	# aside class:"controls", style:"display: block;", ->
+	# a class:"left", href:"#", -> '◄'
+	# a class:"right", href:"#", -> '►'
+	# a class:"up", href:"#", -> '▲'
+	# a class:"down", href:"#", '▼'
 
 	# Presentation progress bar
 	div class:"progress", -> span
